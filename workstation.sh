@@ -88,6 +88,10 @@ arch-chroot /mnt usermod -a -G wheel "$2"
 sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /mnt/etc/sudoers
 arch-chroot /mnt passwd "$2"
 
+printf "${CYAN}[*] ${GREEN}Changing shell for root and user $2"
+arch-chroot /mnt chsh "$2" -s /usr/bin/zsh
+arch-chroot /mnt chsh root -s /usr/bin/zsh
+
 printf "${CYAN}[*] ${GREEN}Enabling services${NC}\n"
 arch-chroot /mnt systemctl enable fstrim.timer
 arch-chroot /mnt systemctl enable sddm
