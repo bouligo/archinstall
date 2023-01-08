@@ -67,7 +67,8 @@ sed -i 's#block filesystems#block encrypt filesystems#g' /mnt/etc/mkinitcpio.con
 arch-chroot /mnt mkinitcpio -P
 
 printf "${CYAN}[*] ${GREEN}Configuring EFI boot${NC}\n"
-efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader /vmlinuz-linux-zen --unicode 'root=/dev/sda3 rw initrd=\intel-ucode.img initrd=\initramfs-linux-zen.img'
+#efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader /vmlinuz-linux-zen --unicode 'root=/dev/sda3 rw initrd=\intel-ucode.img initrd=\initramfs-linux-zen.img'
+efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader /vmlinuz-linux-zen --unicode 'cryptdevice=/dev/sda3:root root=/dev/mapper/root rw initrd=\intel-ucode.img initrd=\initramfs-linux-zen.img'
 efibootmgr -D
 
 loadkeys fr
