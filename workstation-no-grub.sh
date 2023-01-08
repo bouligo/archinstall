@@ -63,7 +63,7 @@ pacstrap /mnt firefox unzip gparted
 #pacstrap /mnt gnome gnome-software-packagekit-plugin networkmanager
 
 printf "${CYAN}[*] ${GREEN}Setting up enciphered startup${NC}\n"
-sed -i 's#block filesystems#block encrypt filesystems#g' /mnt/etc/mkinitcpio.conf
+sed -i 's#filesystems#encrypt filesystems#g' /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -P
 
 printf "${CYAN}[*] ${GREEN}Configuring EFI boot${NC}\n"

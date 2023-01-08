@@ -67,7 +67,7 @@ dd bs=512 count=4 if=/dev/random of=/mnt/crypto_keyfile.bin
 cryptsetup luksAddKey /dev/sda3 /mnt/crypto_keyfile.bin 
 
 sed -i 's#FILES=()#FILES=(/crypto_keyfile.bin)#g' /mnt/etc/mkinitcpio.conf
-sed -i 's#block filesystems#block encrypt filesystems#g' /mnt/etc/mkinitcpio.conf
+sed -i 's#filesystems#encrypt filesystems#g' /mnt/etc/mkinitcpio.conf
 sed -i 's/#GRUB_ENABLE_CRYPTODISK=./GRUB_ENABLE_CRYPTODISK=y/g' /mnt/etc/default/grub
 sed -i 's#GRUB_CMDLINE_LINUX=""#GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:luks"#g' /mnt/etc/default/grub
 
@@ -91,6 +91,9 @@ arch-chroot /mnt passwd "$2"
 printf "${CYAN}[*] ${GREEN}Changing shell for root and user $2${NC}\n"
 arch-chroot /mnt chsh "$2" -s /usr/bin/zsh
 arch-chroot /mnt chsh root -s /usr/bin/zsh
+
+printf "${CYAN}[*] ${GREEN}Installing Oh-My-ZSH for user $2${NC}\n"
+arch-chroot /mnt su "$2" -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"' < /dev/null
 
 printf "${CYAN}[*] ${GREEN}Enabling services${NC}\n"
 arch-chroot /mnt systemctl enable fstrim.timer
