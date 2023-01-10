@@ -56,7 +56,7 @@ exit
 # VMware
 pacstrap /mnt open-vm-tools xf86-input-vmmouse xf86-video-vmware mesa
 # KDE
-pacstrap /mnt plasma yakuake dolphin spectacle kate networkmanager ark gwenview
+pacstrap /mnt plasma yakuake dolphin spectacle kate networkmanager ark gwenview kolourpaint
 # KDE minimal? 
 pacstrap /mnt plasma-desktop sddm sddm-kcm konsole dolphin
 # extra
