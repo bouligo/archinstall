@@ -33,7 +33,7 @@ mount /dev/sda1 /mnt/boot
 
 printf "${CYAN}[*] ${GREEN}Installing packages${NC}\n"
 reflector --country France --latest 10 --sort rate --save /etc/pacman.d/mirrorlist 
-pacstrap /mnt base base-devel linux-zen linux-firmware htop net-tools vim intel-ucode efibootmgr nmap git openssh tmux lsb-release zsh fzf zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+pacstrap /mnt base base-devel linux-zen linux-firmware htop ntp net-tools vim intel-ucode efibootmgr nmap git openssh tmux lsb-release zsh fzf zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 
 printf "${CYAN}[*] ${GREEN}Generating fstab${NC}\n"
 genfstab -U /mnt >> /mnt/etc/fstab

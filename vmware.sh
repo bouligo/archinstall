@@ -31,7 +31,7 @@ mount /dev/Data/opt /mnt/opt
 
 echo "[*] Installing packages"
 reflector --country France --latest 10 --sort rate --save /etc/pacman.d/mirrorlist 
-pacstrap /mnt base base-devel linux-zen linux-firmware htop net-tools vim amd-ucode grub efibootmgr nmap git openssh tmux lsb-release zsh fzf zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+pacstrap /mnt base base-devel linux-zen linux-firmware htop ntp net-tools vim amd-ucode grub efibootmgr nmap git openssh tmux lsb-release zsh fzf zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 
 echo "[*] Generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab

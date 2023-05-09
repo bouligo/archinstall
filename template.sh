@@ -34,7 +34,7 @@ mount /dev/sda1 /mnt/boot/EFI
 
 # Installation des packages
 reflector --country France --country Germany --latest 10 --sort rate --save /etc/pacman.d/mirrorlist 
-pacstrap /mnt base base-devel linux linux-firmware btrfs-progs snapper htop net-tools vim intel-ucode grub grub-btrfs efibootmgr nmap git openssh tmux lsb-release zsh fzf zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+pacstrap /mnt base base-devel linux linux-firmware btrfs-progs snapper htop ntp net-tools vim intel-ucode grub grub-btrfs efibootmgr nmap git openssh tmux lsb-release zsh fzf zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 
 # Génération fstab
 genfstab -U /mnt >> /mnt/etc/fstab
