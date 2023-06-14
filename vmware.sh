@@ -64,10 +64,6 @@ pacstrap /mnt firefox unzip gparted
 ## Gnome
 #pacstrap /mnt gnome gnome-software-packagekit-plugin networkmanager
 
-printf "${CYAN}[*] ${GREEN} Installing grub${NC}\n"
-arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=BOOT
-arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-
 printf "${CYAN}[*] ${GREEN}Configuring EFI boot${NC}\n"
 efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux" --loader /vmlinuz-linux-zen --unicode 'root=/dev/sda3 rw initrd=\amd-ucode.img initrd=\initramfs-linux-zen.img'
 efibootmgr -D
