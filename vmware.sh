@@ -28,11 +28,6 @@ mount /dev/sda3 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 
-printf "${CYAN}[*] ${GREEN} Mounting data partitions (/opt, /home)${NC}\n"
-mkdir /mnt/{home,opt}
-mount /dev/Data/home /mnt/home
-mount /dev/Data/opt /mnt/opt
-
 printf "${CYAN}[*] ${GREEN} Installing packages${NC}\n"
 reflector --country France --latest 10 --sort rate --save /etc/pacman.d/mirrorlist 
 pacstrap /mnt base base-devel linux-zen linux-firmware htop ntp net-tools vim amd-ucode efibootmgr nmap git openssh tmux lsb-release zsh fzf zsh-autosuggestions zsh-completions zsh-syntax-highlighting
@@ -60,7 +55,7 @@ pacstrap /mnt plasma yakuake dolphin spectacle kate networkmanager ark gwenview 
 ## KDE minimal? 
 #pacstrap /mnt plasma-desktop sddm sddm-kcm konsole dolphin
 # extra
-pacstrap /mnt firefox unzip gparted
+pacstrap /mnt keepassxc firefox unzip gparted discord docker dos2unix audacity filezilla gimp gnome-sound-recorder grc libreoffice-still ncdu networkmanager-openvpn obs-studio p7zip reflector rsync signal-desktop tlp traceroute tree xclip zip vlc wget
 ## Gnome
 #pacstrap /mnt gnome gnome-software-packagekit-plugin networkmanager
 

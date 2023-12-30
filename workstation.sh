@@ -58,7 +58,7 @@ pacstrap /mnt plasma yakuake dolphin spectacle kate networkmanager ark gwenview 
 ## KDE minimal? 
 #pacstrap /mnt plasma-desktop sddm sddm-kcm konsole dolphin
 # extra
-pacstrap /mnt firefox unzip gparted
+pacstrap /mnt keepassxc firefox unzip gparted discord docker dos2unix audacity filezilla gimp gnome-sound-recorder grc libreoffice-still ncdu networkmanager-openvpn obs-studio p7zip reflector rsync signal-desktop tlp traceroute tree xclip zip vlc wget
 ## Gnome
 #pacstrap /mnt gnome gnome-software-packagekit-plugin networkmanager
 
