@@ -9,6 +9,9 @@ CYAN='\033[0;36m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+printf "${CYAN}[*] ${GREEN}Updating live system's keyring${NC}\n"
+pacman -Sy --noconfirm archlinux-keyring
+
 printf "${CYAN}[*] ${GREEN}Formatting disk${NC}\n"
 ## Pour deux partitions, une ESP, et un ext4 basique
 #parted -s /dev/sda mklabel gpt mkpart primary fat32 1 500M mkpart primary ext4 500M "100%" set 1 boot on
