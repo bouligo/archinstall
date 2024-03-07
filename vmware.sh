@@ -54,7 +54,7 @@ printf "${CYAN}[*] ${GREEN}Installing optionnal packages${NC}\n"
 # VMware
 pacstrap /mnt open-vm-tools xf86-input-vmmouse xf86-video-vmware mesa
 # KDE
-pacstrap /mnt plasma plasma-wayland-session yakuake dolphin spectacle kate networkmanager ark gwenview kolourpaint
+pacstrap /mnt plasma yakuake dolphin spectacle kate networkmanager ark gwenview kolourpaint
 ## KDE minimal? 
 #pacstrap /mnt plasma-desktop sddm sddm-kcm konsole dolphin
 # extra
@@ -86,7 +86,7 @@ mkdir /mnt/etc/sddm.conf.d/
 cat <<EOT >> /mnt/etc/sddm.conf.d/kde_settings.conf
 [Autologin]
 Relogin=false
-Session=plasmawayland
+Session=plasma
 User=$2
 
 [General]
@@ -94,7 +94,7 @@ HaltCommand=/usr/bin/systemctl poweroff
 RebootCommand=/usr/bin/systemctl reboot
 
 [Theme]
-Current=breeze
+Current=
 
 [Users]
 MaximumUid=60513
