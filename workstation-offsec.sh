@@ -90,15 +90,17 @@ cryptsetup luksAddKey /dev/nvme0n1p2 /mnt/crypto_keyfile.bin
 
 sed -i 's#FILES=()#FILES=(/crypto_keyfile.bin)#g' /mnt/etc/mkinitcpio.conf
 sed -i 's#filesystems#encrypt lvm2 filesystems#g' /mnt/etc/mkinitcpio.conf
-sed -i 's/#GRUB_ENABLE_CRYPTODISK=./GRUB_ENABLE_CRYPTODISK=y/g' /mnt/etc/default/grub
-sed -i 's#GRUB_CMDLINE_LINUX=""#GRUB_CMDLINE_LINUX="cryptdevice=/dev/nvme0n1p2:luks"#g' /mnt/etc/default/grub
+#sed -i 's/#GRUB_ENABLE_CRYPTODISK=./GRUB_ENABLE_CRYPTODISK=y/g' /mnt/etc/default/grub
+#sed -i 's#GRUB_CMDLINE_LINUX=""#GRUB_CMDLINE_LINUX="cryptdevice=/dev/nvme0n1p2:luks"#g' /mnt/etc/default/grub
 
 arch-chroot /mnt mkinitcpio -P
 chmod 000 /mnt/crypto_keyfile.bin
 
-printf "${CYAN}[*] ${GREEN}Installing grub${NC}\n"
-arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=BOOT
-arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+#printf "${CYAN}[*] ${GREEN}Installing grub${NC}\n"
+#arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=BOOT
+#arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+printf "${CYAN}[*] ${GREEN}Configuring EFI boot${NC}\n"
+efibootmgr --create --disk /dev/nvme0n1 --part 1 --label "ArchLinux" --loader /vmlinuz-linux --unicode 'cryptdevice=/dev/nvme0n1p2:cryptlvm root=/dev/ArchLinux/root rw initrd=\intel-ucode.img initrd=\initramfs-linux.img'
 
 loadkeys fr
 printf "${CYAN}[*] ${GREEN}Setting root password${NC}\n"
