@@ -58,11 +58,11 @@ printf "${CYAN}[*] ${GREEN}Installing optionnal packages${NC}\n"
 ## VMware
 #pacstrap /mnt open-vm-tools xf86-input-vmmouse xf86-video-vmware mesa
 # KDE
-pacstrap /mnt plasma yakuake dolphin spectacle kate networkmanager ark gwenview kolourpaint
+pacstrap /mnt plasma yakuake dolphin spectacle kate networkmanager ark gwenview kolourpaint filelight dolphin-plugins kwalletmanager kcalc kcharselect kdialog krdc ktorrent okular partitionmanager krdp
 ## KDE minimal? 
 #pacstrap /mnt plasma-desktop sddm sddm-kcm konsole dolphin
 # extra
-pacstrap /mnt keepassxc firefox unzip gparted discord docker dos2unix audacity filezilla gimp gnome-sound-recorder grc libreoffice-still ncdu networkmanager-openvpn obs-studio p7zip reflector rsync signal-desktop tlp traceroute tree xclip zip vlc wget yt-dlp
+pacstrap /mnt keepassxc firefox unzip discord docker dos2unix audacity filezilla gimp gnome-sound-recorder grc libreoffice-still ncdu networkmanager-openvpn obs-studio p7zip reflector rsync signal-desktop tlp traceroute tree xclip zip vlc wget yt-dlp
 ## Gnome
 #pacstrap /mnt gnome gnome-software-packagekit-plugin networkmanager
 
