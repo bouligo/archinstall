@@ -51,16 +51,20 @@ echo "$1" > /mnt/etc/hostname
 echo "127.0.0.1 $1" >> /mnt/etc/hosts
 
 printf "${CYAN}[*] ${GREEN}Installing optionnal packages${NC}\n"
+# Old hardware
+pacstrap /mnt xf86-video-intel
 # VMware
 #pacstrap /mnt open-vm-tools xf86-input-vmmouse xf86-video-vmware mesa
 # KDE
 #pacstrap /mnt plasma yakuake dolphin spectacle kate networkmanager ark gwenview kolourpaint filelight dolphin-plugins kwalletmanager kcalc kcharselect kdialog krdc ktorrent okular partitionmanager krdp
 ## KDE minimal? 
-pacstrap /mnt plasma-desktop sddm sddm-kcm konsole dolphin networkmanager # yakuake dolphin
+#pacstrap /mnt plasma-desktop sddm sddm-kcm konsole dolphin networkmanager # yakuake dolphin
 # extra
 #pacstrap /mnt keepassxc firefox unzip discord docker dos2unix audacity filezilla gimp gnome-sound-recorder grc libreoffice-still ncdu networkmanager-openvpn obs-studio p7zip reflector rsync signal-desktop traceroute tree xclip zip vlc wget yt-dlp
 ## Gnome
 #pacstrap /mnt gnome gnome-software-packagekit-plugin networkmanager
+## LXDE
+pacstrap /mnt lxde network-manager-applet networkmanager
 
 printf "${CYAN}[*] ${GREEN}Configuring boot with GRUB${NC}\n"
 pacstrap /mnt grub
@@ -80,28 +84,8 @@ arch-chroot /mnt passwd "$2"
 
 printf "${CYAN}[*] ${GREEN}Enabling services${NC}\n"
 arch-chroot /mnt systemctl enable fstrim.timer
-arch-chroot /mnt systemctl enable sddm
+arch-chroot /mnt systemctl enable lxdm
 arch-chroot /mnt systemctl enable NetworkManager
-
-printf "${CYAN}[*] ${GREEN}Enabling autologin for user $2 in SDDM ${NC}\n"
-mkdir /mnt/etc/sddm.conf.d/
-cat <<EOT >> /mnt/etc/sddm.conf.d/kde_settings.conf
-[Autologin]
-Relogin=false
-Session=plasma
-User=$2
-
-[General]
-HaltCommand=/usr/bin/systemctl poweroff
-RebootCommand=/usr/bin/systemctl reboot
-
-[Theme]
-Current=
-
-[Users]
-MaximumUid=60513
-MinimumUid=1000
-EOT
 
 printf "${CYAN}[*] ${GREEN}Unmounting partitions ${NC}\n"
 umount /dev/sda1
