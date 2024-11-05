@@ -72,6 +72,13 @@ Name=French keyboard layout
 Exec=/usr/bin/setxkdbmap -layout "fr"
 NoDisplay=True
 EOT
+cat <<EOT >> /mnt/etc/X11/xorg.conf.d/00-keyboard.conf  
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "fr"
+EndSection
+EOT
 
 printf "${CYAN}[*] ${GREEN}Configuring boot with GRUB${NC}\n"
 pacstrap /mnt grub
