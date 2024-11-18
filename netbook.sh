@@ -79,6 +79,15 @@ Section "InputClass"
         Option "XkbLayout" "fr"
 EndSection
 EOT
+cat <<EOT >> /mnt/etc/X11/xorg.conf.d/40-libinput.conf
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        MatchDevicePath "/dev/input/event*"
+        Driver "libinput"
+        Option "Tapping" "on"
+EndSection
+EOT
 
 printf "${CYAN}[*] ${GREEN}Configuring boot with GRUB${NC}\n"
 pacstrap /mnt grub
