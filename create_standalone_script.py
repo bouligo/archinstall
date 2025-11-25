@@ -7,14 +7,14 @@ import re
 def search_and_replace(script_content):
     for i, line in enumerate(script_content):
         line = line.strip()
-        if re.match('^# *bash', line):
+        if re.match('^# *source', line):
             script_content[i] = ""
             continue
-        if not re.match('^ *bash', line):
+        if not re.match('^ *source', line):
             continue
         print("[*] Parsing line '"+line+"'")
-        sh_filepath = re.sub('^ *bash *', '', line)
-        sh_filepath = re.sub(' *#.*', '', sh_filepath)
+        sh_filepath = re.sub(' *#.*', '', line)
+        sh_filepath = re.sub('^ *source *', '', sh_filepath)
         with open(sh_filepath, 'r') as f:
             script_content = script_content[:i] + f.readlines() + script_content[i+1:]
         return script_content
@@ -40,7 +40,7 @@ if not script_content:
 finished = False
 while not finished:
     script_content = search_and_replace(script_content)
-    if not any([re.match('^ *bash', line.strip()) for line in script_content]):
+    if not any([re.match('^ *source', line.strip()) for line in script_content]):
         finished = True
 
 with open(sys.argv[1].replace('.sh', '') + '-static.sh', 'w') as f:

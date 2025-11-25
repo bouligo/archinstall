@@ -38,7 +38,9 @@ Edit `my-install.sh` with your preferred text editor. Review the file and uncomm
 *   **Kernel:** `kernel.sh` (stable), `kernel-lts.sh`, etc.
 *   **Desktop:** `kde.sh`, `gnome.sh`, or minimal versions.
 
-### 2. Generate the standalone script
+*Note*: If you cloned this repository from the archiso, you can skip step 2. 
+
+### 2. Generate the standalone script (Optionnal)
 
 Run the Python builder script to merge your configuration and the modules into a single file:
 
@@ -50,7 +52,7 @@ This will create a file named `my-install-static.sh`.
 
 ### 3. Run the installer
 
-Boot your target machine with the Arch Linux Live ISO. Transfer the generated `my-install-static.sh` to the live environment (e.g., via SCP, USB drive, or downloading it).
+Boot your target machine with the Arch Linux Live ISO and transfer the generated `my-install-static.sh` to the live environment (e.g., via SCP, USB drive, or downloading it).
 
 Run the script with the required arguments:
 

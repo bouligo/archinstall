@@ -25,95 +25,95 @@ export NC='\033[0m' # No Color
 ##
 # Update liveiso keyring to ensure pacman will be able to download and install packages without signing issues
 
-bash ./modules/liveiso/keyring-update.sh
+source ./modules/liveiso/keyring-update.sh
 
 ##
 # Disk configuration (select only one)
 
-# bash ./modules/disk/uefi/simple.sh
-# bash ./modules/disk/uefi/lvm.sh
-bash ./modules/disk/uefi/lvm-on-luks.sh
+# source ./modules/disk/uefi/simple.sh
+# source ./modules/disk/uefi/lvm.sh
+source ./modules/disk/uefi/lvm-on-luks.sh
 
 ##
 # Core packages
 
-bash ./modules/packages/reflector.sh
+source ./modules/packages/reflector.sh
 
-bash ./modules/packages/core.sh
-# bash ./modules/packages/amd.sh
-# bash ./modules/packages/intel.sh
-# bash ./modules/packages/kernel.sh
-# bash ./modules/packages/kernel-headers.sh
-# bash ./modules/packages/kernel-lts.sh
-# bash ./modules/packages/kernel-lts-headers.sh
-bash ./modules/packages/kernel-zen.sh
-bash ./modules/packages/kernel-zen-headers.sh
+source ./modules/packages/core.sh
+# source ./modules/packages/amd.sh
+# source ./modules/packages/intel.sh
+# source ./modules/packages/kernel.sh
+# source ./modules/packages/kernel-headers.sh
+# source ./modules/packages/kernel-lts.sh
+# source ./modules/packages/kernel-lts-headers.sh
+source ./modules/packages/kernel-zen.sh
+source ./modules/packages/kernel-zen-headers.sh
 
 
 ##
 # fstab generation
 
-bash ./modules/disk/fstab.sh
+source ./modules/disk/fstab.sh
 
 ##
 # Locale management
 
-bash ./modules/locales/timezones/paris.sh
-bash ./modules/settings/hostname.sh
-bash ./modules/locales/keyboards/french.sh
+source ./modules/locales/timezones/paris.sh
+source ./modules/settings/hostname.sh
+source ./modules/locales/keyboards/french.sh
 
-bash ./modules/locales/languages/english.sh
-bash ./modules/locales/languages/french.sh
+source ./modules/locales/languages/english.sh
+source ./modules/locales/languages/french.sh
 
 ##
 # User management
-bash ./modules/settings/passwd.sh
-# bash ./modules/settings/passwd-root.sh
+source ./modules/settings/passwd.sh
+# source ./modules/settings/passwd-root.sh
 
 ##
 # Additionnal packages
 
-# bash ./modules/packages/kde-minimal.sh
-bash ./modules/packages/kde.sh
-# bash ./modules/packages/gnome-minimal.sh
-# bash ./modules/packages/gnome.sh
+# source ./modules/packages/kde-minimal.sh
+source ./modules/packages/kde.sh
+# source ./modules/packages/gnome-minimal.sh
+# source ./modules/packages/gnome.sh
 
-bash ./modules/packages/yay.sh
-bash ./modules/packages/zsh.sh
-bash ./modules/packages/extras.sh
+source ./modules/packages/yay.sh
+source ./modules/packages/zsh.sh
+source ./modules/packages/extras.sh
 
-# bash ./modules/packages/vmware.sh
-# bash ./modules/packages/qemu.sh
-# bash ./modules/packages/offsec.sh
+# source ./modules/packages/vmware.sh
+# source ./modules/packages/qemu.sh
+# source ./modules/packages/offsec.sh
 
 
 ##
 # Installing bootloader (select only one)
 
-# bash ./modules/bootloader/grub.sh
-bash ./modules/bootloader/efistub.sh
+# source ./modules/bootloader/grub.sh
+source ./modules/bootloader/efistub.sh
 
 
 ##
 # Users configuration
 
-bash ./modules/settings/zsh.sh
-bash ./modules/settings/ohmyzsh.sh
+source ./modules/settings/zsh.sh
+source ./modules/settings/ohmyzsh.sh
 
 
 ##
 # Services
 
-bash ./modules/services/networkmanager.sh
-# bash ./modules/autorun/nm-hotspot.sh
-# bash ./modules/services/ssh.sh
-bash ./modules/services/fstrim.sh
+source ./modules/services/networkmanager.sh
+# source ./modules/autorun/nm-hotspot.sh
+# source ./modules/services/ssh.sh
+source ./modules/services/fstrim.sh
 
 
 ##
 # Un-mounting disks
 
-bash ./modules/disk/umount.sh
+source ./modules/disk/umount.sh
 
 ##
 # Reboot of poweroff

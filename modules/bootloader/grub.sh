@@ -1,4 +1,4 @@
-bash ./modules/packages/grub.sh
+source ./modules/packages/grub.sh
 
 printf "${CYAN}[*] Configuring grub${NC}\n"
 sed -i 's/quiet//g' /mnt/etc/default/grub

@@ -1,4 +1,4 @@
-bash ./modules/packages/efi.sh
+source ./modules/packages/efi.sh
 
 printf "${CYAN}[*] Configuring EFI boot${NC}\n"
 loader=$(ls /mnt/boot/vmlinuz* | head -n1 | sed -e 's#.*/##g')  # In case several kernels are installed
