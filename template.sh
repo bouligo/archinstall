@@ -1,5 +1,4 @@
 #!/bin/sh
-set -u  # if a variable is not set, abort execution
 
 if [ -z "$3" ]; then
 	echo "Usage: $0 diskname hostname user"
