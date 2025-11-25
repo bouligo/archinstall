@@ -1,11 +1,11 @@
 printf "${CYAN}[*] partitionning disk${NC}\n"
-user_disk_size=$(lsblk /dev/$user_disk -b -n -d -o size)
+user_disk_size=$(($(lsblk /dev/$user_disk -b -n -d -o size)/1024/1024))
 ram_size=$(free -m | awk '/Mem:/ {print $2}')
 efi_size=401 # 400 Mo (419430400)
 default_swap_size=2048 # 2Go (2147483648)
 
 # Disk smaller than 20Go, create small swap (10% of disk)
-if [ $user_disk_size -lt 21474836480 ]; then
+if [ $user_disk_size -lt 20480 ]; then
     printf "${RED}[-] Small disk detected${NC}\n"
     swap_size=$((user_disk_size/10))
     swap_offset=$((swap_size+efi_size+4))
@@ -38,7 +38,7 @@ vgcreate ArchLinux "/dev/$partition_root"
 lvcreate -L "$swap_size"MiB ArchLinux -n swap
 
 # Disk smaller than 50Go
-if [ $user_disk_size -lt 53687091200 ]; then
+if [ $user_disk_size -lt 51200 ]; then
     printf "${RED}[-] Small disk detected, creating only root partition${NC}\n"
     lvcreate -l 100%FREE ArchLinux -n root
 else

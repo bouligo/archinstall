@@ -62,6 +62,7 @@ source ./modules/locales/timezones/paris.sh
 source ./modules/settings/hostname.sh
 source ./modules/locales/keyboards/french.sh
 
+# Last language will be system-language
 source ./modules/locales/languages/english.sh
 source ./modules/locales/languages/french.sh
 
