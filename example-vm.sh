@@ -31,9 +31,9 @@ bash ./modules/liveiso/keyring-update.sh
 ##
 # Disk configuration (select only one)
 
-# bash ./modules/disk/uefi/simple.sh
+bash ./modules/disk/uefi/simple.sh
 # bash ./modules/disk/uefi/lvm.sh
-bash ./modules/disk/uefi/lvm-on-luks.sh
+# bash ./modules/disk/uefi/lvm-on-luks.sh
 
 ##
 # Core packages
@@ -43,12 +43,12 @@ bash ./modules/packages/reflector.sh
 bash ./modules/packages/core.sh
 # bash ./modules/packages/amd.sh
 # bash ./modules/packages/intel.sh
-# bash ./modules/packages/kernel.sh
+bash ./modules/packages/kernel.sh
 # bash ./modules/packages/kernel-headers.sh
 # bash ./modules/packages/kernel-lts.sh
 # bash ./modules/packages/kernel-lts-headers.sh
-bash ./modules/packages/kernel-zen.sh
-bash ./modules/packages/kernel-zen-headers.sh
+# bash ./modules/packages/kernel-zen.sh
+# bash ./modules/packages/kernel-zen-headers.sh
 
 
 ##
@@ -74,18 +74,18 @@ bash ./modules/settings/passwd.sh
 ##
 # Additionnal packages
 
-# bash ./modules/packages/kde-minimal.sh
-bash ./modules/packages/kde.sh
+bash ./modules/packages/kde-minimal.sh
+# bash ./modules/packages/kde.sh
 # bash ./modules/packages/gnome-minimal.sh
 # bash ./modules/packages/gnome.sh
 
-bash ./modules/packages/yay.sh
+# bash ./modules/packages/yay.sh
 bash ./modules/packages/zsh.sh
-bash ./modules/packages/extras.sh
+# bash ./modules/packages/extras.sh
 
 # bash ./modules/packages/vmware.sh
-# bash ./modules/packages/qemu.sh
-# bash ./modules/packages/offsec.sh
+bash ./modules/packages/qemu.sh
+bash ./modules/packages/offsec.sh
 
 
 ##
@@ -107,8 +107,8 @@ bash ./modules/settings/ohmyzsh.sh
 
 bash ./modules/services/networkmanager.sh
 # bash ./modules/autorun/nm-hotspot.sh
-# bash ./modules/services/ssh.sh
-bash ./modules/services/fstrim.sh
+bash ./modules/services/ssh.sh
+# bash ./modules/services/fstrim.sh
 
 
 ##
@@ -119,5 +119,5 @@ bash ./modules/disk/umount.sh
 ##
 # Reboot of poweroff
 
-reboot
-# poweroff
+# reboot
+poweroff
