@@ -100,6 +100,7 @@ source ./modules/bootloader/efistub.sh
 
 source ./modules/settings/zsh.sh
 source ./modules/settings/ohmyzsh.sh
+# source ./modules/settings/sddm-autologin.sh
 
 
 ##
