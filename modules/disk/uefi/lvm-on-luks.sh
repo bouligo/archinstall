@@ -23,8 +23,8 @@ fi
 
 parted -s /dev/$user_disk mklabel gpt mkpart primary fat32 1MiB "$efi_size"MiB mkpart primary "$efi_size"MiB "100%" set 1 boot on set 2 lvm on
 
-export partition_boot=$(lsblk /dev/$user_disk -x NAME | grep ':1' | awk '{print $1}')
-export partition_root=$(lsblk /dev/$user_disk -x NAME | grep ':2' | awk '{print $1}')
+export partition_boot=$(lsblk /dev/$user_disk -x MIN | tail -n+3 | sed '1,1!d' | awk '{print $1}')
+export partition_root=$(lsblk /dev/$user_disk -x MIN | tail -n+3 | sed '2,2!d' | awk '{print $1}')
 declare -A lvm_extra_partitions
 export lvm_extra_partitions
 

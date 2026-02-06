@@ -28,11 +28,11 @@ export NC='\033[0m' # No Color
 source ./modules/liveiso/keyring-update.sh
 
 ##
-# Disk configuration (select only one)
+# Disk configuration (select only one) TODO: grep :1 does NOT work everytime
 
-# source ./modules/disk/uefi/simple.sh
-# source ./modules/disk/uefi/lvm.sh
-source ./modules/disk/uefi/lvm-on-luks.sh
+source ./modules/disk/uefi/simple.sh  # No encryption
+# source ./modules/disk/uefi/lvm.sh  # LVM without encryption
+# source ./modules/disk/uefi/lvm-on-luks.sh  # LVM with encryption
 
 ##
 # Core packages
