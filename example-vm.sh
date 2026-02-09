@@ -30,9 +30,9 @@ source ./modules/liveiso/keyring-update.sh
 ##
 # Disk configuration (select only one)
 
-source ./modules/disk/uefi/simple.sh
-# source ./modules/disk/uefi/lvm.sh
-# source ./modules/disk/uefi/lvm-on-luks.sh
+source ./modules/disk/uefi/simple.sh  # /boot, swap and /
+# source ./modules/disk/uefi/lvm.sh  # /boot, LVM[swap, root, home]
+# source ./modules/disk/uefi/lvm-on-luks.sh  # /boot, LUKS[LVM[swap, root, home]]
 
 ##
 # Core packages

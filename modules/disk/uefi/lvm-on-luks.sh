@@ -21,6 +21,7 @@ else
     fi
 fi
 
+wipefs -a /dev/$user_disk
 parted -s /dev/$user_disk mklabel gpt mkpart primary fat32 1MiB "$efi_size"MiB mkpart primary "$efi_size"MiB "100%" set 1 boot on set 2 lvm on
 
 export partition_boot=$(lsblk /dev/$user_disk -x MIN | tail -n+3 | sed '1,1!d' | awk '{print $1}')
