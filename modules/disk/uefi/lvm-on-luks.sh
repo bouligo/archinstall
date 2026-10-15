@@ -1,7 +1,7 @@
 printf "${CYAN}[*] partitionning disk${NC}\n"
 user_disk_size=$(($(lsblk /dev/$user_disk -b -n -d -o size)/1024/1024))
 ram_size=$(free -m | awk '/Mem:/ {print $2}')
-efi_size=401 # 400 Mo (419430400)
+efi_size=1201 # 400 Mo (1258291200)
 default_swap_size=2048 # 2Go (2147483648)
 
 # Disk smaller than 20Go, create small swap (10% of disk)
