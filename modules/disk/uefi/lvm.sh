@@ -43,9 +43,15 @@ lvcreate -L "$swap_size"MiB ArchLinux -n swap
 if [ $user_disk_size -lt 51200 ]; then
     printf "${RED}[-] Small disk detected, creating only root partition${NC}\n"
     lvcreate -l 100%FREE ArchLinux -n root
+# Disk smaller than 100Go
+if [ $user_disk_size -lt 102400 ]; then
+    printf "${RED}[-] Medium sized disk detected, creating only root partition${NC}\n"
+    lvcreate -L 50G ArchLinux -n root
+    lvcreate -l 100%FREE ArchLinux -n home
+    lvm_extra_partitions["home"]="ArchLinux/home"
 else
     printf "${GREEN}[+] Big disk detected, creating root and home partitions${NC}\n"
-    lvcreate -L 40G ArchLinux -n root
+    lvcreate -L 100G ArchLinux -n root
     lvcreate -l 100%FREE ArchLinux -n home
     lvm_extra_partitions["home"]="ArchLinux/home"
 fi
