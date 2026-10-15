@@ -23,6 +23,7 @@ fi
 
 wipefs -a /dev/$user_disk
 parted -s /dev/$user_disk mklabel gpt mkpart primary fat32 1MiB "$efi_size"MiB mkpart primary linux-swap "$efi_size"MiB "$swap_offset"MiB mkpart primary "$swap_offset"MiB "100%" set 1 boot on set 3 lvm on
+partprobe /dev/$user_disk
 
 export partition_boot=$(lsblk /dev/$user_disk -x MIN | tail -n+3 | sed '1,1!d' | awk '{print $1}')
 export partition_swap=$(lsblk /dev/$user_disk -x MIN | tail -n+3 | sed '2,2!d' | awk '{print $1}')

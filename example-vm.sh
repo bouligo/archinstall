@@ -109,6 +109,7 @@ source ./modules/services/networkmanager.sh
 # source ./modules/autorun/nm-hotspot.sh
 source ./modules/services/ssh.sh
 # source ./modules/services/fstrim.sh
+source ./modules/services/coredump.sh
 
 
 ##
