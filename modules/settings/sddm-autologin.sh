@@ -1,6 +1,6 @@
 printf "${CYAN}[*] Enabling autologin for user $3 in SDDM ${NC}\n"
 
-mkdir /mnt/etc/sddm.conf.d/
+mkdir -p /mnt/etc/sddm.conf.d/
 cat <<EOT >> /mnt/etc/sddm.conf.d/kde_settings.conf
 [Autologin]
 Relogin=false
